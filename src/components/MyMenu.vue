@@ -1,27 +1,45 @@
 <template>
   <div class="root">
-    <div>
+    <div class="avatarCon">
 
-    <img src="" alt="" width="80" class="avatar">
-    <p>点击头像登录</p>
+      <img src="" alt="" width="80" class="avatar">
+      <p class="avatarTips">点击头像登录</p>
     </div>
-  <div>
-    <ul>
-      <li>全部</li>
-      <li>精选</li>
-      <li>分享</li>
-      <li>招聘</li>
-      <li>消息</li>
-      <li>设置</li>
-      <li>关于</li>
-    </ul>
-  </div>
+    <div>
+      <ul>
+        <li>
+          <p>全部</p>
+        </li>
+        <li>
+          <p>精选</p>
+        </li>
+        <li>
+          <p>全部</p>
+        </li>
+        <li>
+          <p>分享</p>
+        </li>
+        <li>
+          <p>招聘</p>
+        </li>
+        <li>
+          <p>消息</p>
+        </li>
+        <li class="line"></li>
+        <li>
+          <p>设置</p>
+        </li>
+        <li>
+          <p>关于</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'mymenu',
+    name: 'mymenu', // can not
     data() {
       return {
         msg: 'Welcome to menu'
@@ -43,22 +61,41 @@
     padding: 0;
   }
 
-  li {
+  li p {
     display: block;
     margin: 0 10px;
+    padding: 12px 0 12px 20px;
   }
 
   a {
     color: #42b983;
   }
 
+  li.line {
+    border-bottom: 1px solid #eee;
+    padding: 0;
+  }
+
   .root {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
-    bottom:0;
-    width: 80%;
+    right: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #fff;
+    text-align: left;
+    border-right: 1px solid #eee;
+  }
+
+  .avatarCon {
+    height: 100px;
+    background-color: #ccc;
+    padding: 30px 0 30px 30px;
+  }
+
+  .avatarTips {
+    margin-top: 20px;
   }
 
   .avatar {

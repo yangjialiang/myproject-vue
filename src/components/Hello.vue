@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <MyMenu></MyMenu>
+
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import MyMenu from './MyMenu';
+  // import MyMenu from './MyMenu';
 
   export default {
     name: 'hello',
@@ -30,9 +30,6 @@
       return {
         msg: 'Welcome to Your Vue.js App'
       };
-    },
-    components: {
-      MyMenu,
     }
   };
 
