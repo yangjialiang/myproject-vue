@@ -7,23 +7,17 @@
     </div>
     <div>
       <ul>
-        <li>
-          <p>全部</p>
-        </li>
-        <li>
+        <li @click="changeType" type='good'>
           <p>精选</p>
         </li>
-        <li>
-          <p>全部</p>
-        </li>
-        <li>
+        <li @click="changeType" type='share'>
           <p>分享</p>
         </li>
-        <li>
-          <p>招聘</p>
+        <li @click="changeType" type='ask'>
+          <p>问答</p>
         </li>
-        <li>
-          <p>消息</p>
+        <li @click="changeType" type='job'>
+          <p>招聘</p>
         </li>
         <li class="line"></li>
         <li>
@@ -44,6 +38,12 @@
       return {
         msg: 'Welcome to menu'
       };
+    },
+    methods: {
+      changeType(event) {
+        this.$store.state.listType = event.target.type;
+        console.log(event.target.type);
+      }
     }
   };
 
@@ -65,6 +65,7 @@
     display: block;
     margin: 0 10px;
     padding: 12px 0 12px 20px;
+    pointer-events: none;
   }
 
   a {

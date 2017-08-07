@@ -127,10 +127,11 @@ export default {
           }
         }
       );
+      document.querySelector('body').scrollTop = 0;
     }
   },
   beforeUpdate() {
-    if (self.listType !== self.$store.state.listType) {
+    if (this.listType !== this.$store.state.listType) {
       this.resetList();
     }
   },
@@ -148,6 +149,9 @@ ul {
 }
 li {
   display: inline-block;
+}
+.listCon{
+  margin-top:0.8rem;
 }
 .list {
   width:100%;

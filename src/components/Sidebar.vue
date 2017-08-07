@@ -1,5 +1,5 @@
 <template>
-  <div @click="hideContent" class="sidebar">
+  <div @click="hideContent" class="sidebar" :class="{show:isShow}">
     <div class="nav">
       <p @click.stop="showContent" class="">菜单</p>
     </div>
@@ -34,6 +34,13 @@
       }
     },
     created() {
+    },
+    mounted() {
+      console.log(document.getElementsByClassName('sidebar')[0]);
+      document.getElementsByClassName('sidebar')[0].addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
     },
     components: {
       MyMenu,
@@ -71,18 +78,19 @@
 
   .nav {
     width: 100%;
-    height: 30px;
+    height: 0.8rem;
     background-color: #eee;
-    line-height: 30px;
-    padding-left: 10px;
+    line-height: 0.8rem;
   }
 
   .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
     width: 100%;
+  }
+  .sidebar.show {
+    bottom: 0;
   }
 
   .contentBG {
