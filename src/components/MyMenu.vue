@@ -42,7 +42,7 @@
     methods: {
       changeType(event) {
         this.$store.state.listType = event.target.type;
-        console.log(event.target.type);
+        // console.log(event.target.type);
       }
     }
   };

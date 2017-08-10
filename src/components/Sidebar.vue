@@ -36,7 +36,7 @@
     created() {
     },
     mounted() {
-      console.log(document.getElementsByClassName('sidebar')[0]);
+      // console.log(document.getElementsByClassName('sidebar')[0]);
       document.getElementsByClassName('sidebar')[0].addEventListener('touchmove', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -77,18 +77,22 @@
   }
 
   .nav {
-    width: 100%;
+    width: 50px;
     height: 0.8rem;
     background-color: #eee;
     line-height: 0.8rem;
+    text-align: left;
+    padding-left: 20px;
   }
 
   .sidebar {
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
   }
+
   .sidebar.show {
     bottom: 0;
   }
