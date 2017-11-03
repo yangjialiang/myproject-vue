@@ -127,7 +127,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 80%;
+    width: 6.68rem;
     background-color: #fff;
     text-align: left;
     border-right: 1px solid #eee;

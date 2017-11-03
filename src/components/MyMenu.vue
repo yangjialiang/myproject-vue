@@ -1,8 +1,8 @@
 <template>
   <div class="root">
     <div class="avatarCon">
-
-      <img src="" alt="" width="80" class="avatar">
+      <!-- <div class="avatar" v-bind:style="{backgroundImage:'url('+headimg+')',color:'green'}"></div> -->
+      <img src="../assets/images/headImg.jpg" alt="" width="80" class="avatar">
       <p class="avatarTips">点击头像登录</p>
     </div>
     <div>
@@ -36,16 +36,19 @@
 </template>
 
 <script>
+  import { myMenu } from '../utils/imageUrl';
+
   export default {
     name: 'mymenu', // can not
     data() {
       return {
-        msg: 'Welcome to menu'
+        headimg: myMenu.headImg
       };
     },
     methods: {
-      changeType(event) {
-        this.$store.state.listType = event.target.type;
+      changeType() {
+        console.log(this.headimg);
+        // this.$store.state.listType = event.target.type;
         // console.log(event.target.type);
       },
       toDetail(item) {
@@ -70,9 +73,10 @@
 
   li p {
     display: block;
-    margin: 0 10px;
-    padding: 12px 0 12px 20px;
+    margin: 0 5%;
+    padding: 12px 0 12px 0px;
     pointer-events: none;
+    border-bottom: 1px rgb(235,234,231) solid;
   }
 
   a {
@@ -80,7 +84,7 @@
   }
 
   li.line {
-    border-bottom: 1px solid #eee;
+    border-bottom: 0.2rem solid rgb(235, 236, 231);
     padding: 0;
   }
 
@@ -97,19 +101,21 @@
   }
 
   .avatarCon {
-    height: 100px;
-    background-color: #ccc;
-    padding: 30px 0 30px 30px;
+    height: 4rem;
+    background-color: rgb(249,242,234);
+    padding: 0.7rem 0 0px 0.4rem;
   }
 
   .avatarTips {
     margin-top: 20px;
+    font-size: 0.3rem;
   }
 
   .avatar {
-    border-radius: 50px;
-    width: 80px;
-    height: 80px;
-    background-color: #eee;
+    border-radius: 1.7rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 0.1rem white solid;
+    background-size: contain;
   }
 </style>
