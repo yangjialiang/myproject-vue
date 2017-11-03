@@ -3,6 +3,7 @@ import Router from 'vue-router';
 // import Hello from '@/components/Hello';
 import List from '@/components/list';
 import Detail from '@/components/Detail';
+import WritePosts from '@/components/writePosts';
 import PageTransition from '@/components/PageTransition';
 
 Vue.use(Router);
@@ -24,6 +25,9 @@ export default new Router({
       }, {
         path: '/detail/:id',
         component: Detail  // 子路由组件  例如，访问www.aaa.com/pageA 显示为PageA
+      }, {
+        path: '/writePosts',
+        component: WritePosts  // 子路由组件  例如，访问www.aaa.com/pageA 显示为PageA
       }]
     },
     // {

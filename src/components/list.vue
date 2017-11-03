@@ -1,8 +1,10 @@
 <template>
-  <mt-loadmore topPullText="" bottomPullText="" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
+  <mt-loadmore topPullText="" bottomPullText="" :top-method="loadTop"  :bottom-all-loaded="allLoaded"
     ref="loadmore">
-    <ul class="listCon">
-      <li class="list" v-for="item in list" @click="toDetail(item)">
+    <ul class="listCon" v-infinite-scroll="loadBottom"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-distance="10">
+      <li class="list" v-for="(item,index) in list" :key="index" @click="toDetail(item)">
         <div class='title'>{{ item.title }}</div>
         <div class='tab'>
           <div class='listTypeName' :style="{ color: (item.top|item.good?'white':'rgb(151,151,151)') ,background:(item.top|item.good?'rgb(127,188,9)':'rgb(225,225,225)') }">{{item.top?"置顶":(item.good?"精华":getListTypeText())}}</div>
@@ -16,9 +18,10 @@
 
 <script>
   import Vue from 'vue';
-  import { Loadmore } from 'mint-ui';
-  import getListInfo from '../utils/getInfo';
-
+  import { Loadmore, InfiniteScroll } from 'mint-ui';
+  import { getInfo } from '../utils/getInfo';
+  
+  Vue.use(InfiniteScroll);
   Vue.component(Loadmore.name, Loadmore);
   export default {
     name: 'list',
@@ -58,7 +61,7 @@
         // this.$store.state.listType获取对应类型的列表数据 ask share job good
         const self = this;
         self.page = 1;
-        getListInfo(
+        getInfo(
           'https://cnodejs.org/api/v1/topics?', {
             page: self.page,
             tab: self.$store.state.listType
@@ -77,9 +80,10 @@
       },
       loadBottom() {
         // 上拉加载更多
+        this.loading = true;
         const self = this;
         self.page += 1;
-        getListInfo(
+        getInfo(
           'https://cnodejs.org/api/v1/topics?', {
             page: self.page,
             tab: self.$store.state.listType
@@ -91,7 +95,8 @@
               } else {
                 self.allLoaded = false;
               }
-              self.$refs.loadmore.onBottomLoaded();
+              self.loading = false;
+              // self.$refs.loadmore.onBottomLoaded();
             }
           }
         );
@@ -121,7 +126,7 @@
         const self = this;
         self.listType = self.$store.state.listType;
         self.page = 1;
-        getListInfo(
+        getInfo(
           'https://cnodejs.org/api/v1/topics?', {
             page: self.page,
             tab: self.$store.state.listType

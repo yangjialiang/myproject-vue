@@ -26,6 +26,10 @@
         <li>
           <p>关于</p>
         </li>
+        <li class="line"></li>
+        <li @click="toDetail('writePosts')">
+          <p>写帖</p>
+        </li>
       </ul>
     </div>
   </div>
@@ -43,7 +47,10 @@
       changeType(event) {
         this.$store.state.listType = event.target.type;
         // console.log(event.target.type);
-      }
+      },
+      toDetail(item) {
+        this.$router.push({ path: `/${item}` });
+      },
     }
   };
 
